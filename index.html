@@ -44,7 +44,7 @@
         <section class="hero-section">
             <div class="container">
                 <h1 class="main-title">Ефективні рішення для вашого бізнесу</h1>
-                <button class="order-button" type="button">Замовити послугу</button>
+                <button class="order-button" type="button" data-modal-open>Замовити послугу</button>
             </div>
         </section>
         <section class="section">
@@ -338,6 +338,14 @@
             </div>
         </div>
     </footer>
+    <div class="backdrop is-hidden" data-modal>
+        <div class="modal">
+            <button class="close-btn-modal" type="button" data-modal-close>
+                <svg class="close-icon" width="18px" height="18px"><use href="./images/symbol-defs-new.svg#icon-close-black-18dp-2-1"></use></svg>
+            </button>
+
+        </div>
+    </div>
     <script src="./js/modal.js"></script>
 </body>
 

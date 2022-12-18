@@ -7,6 +7,7 @@
     --secondary-background-color: #F5F4FA;
     --footer-color: #2F303A;
     --borders-color: #AFB1B8;
+    --time: cubic-bezier(0.4, 0, 0.2, 1)
 }
 
 a {
@@ -116,6 +117,7 @@ button {
     line-height: 1.14;
     letter-spacing: 0.02em;
     color: var(--primary-txt-color);
+    transition: color 250ms var(--time);
 }
 
 .nav-link:hover,
@@ -142,6 +144,7 @@ margin-left: 0px;
     align-items: center;
     color: var(--secondary-text-color);
     gap: 10px;
+    transition: color 250ms var(--time);
 }
 
 .contact-list {
@@ -208,6 +211,8 @@ margin-left: 0px;
     line-height: 1.71;
     letter-spacing: 0.03em;
     color: var(--white-color);
+
+    transition: color 250ms var(--time);
 }
 
 .address-list .address-item:not(:last-child) {
@@ -227,6 +232,8 @@ margin-left: 0px;
     line-height: 1.71;
     letter-spacing: 0.03em;
     color: rgba(255, 255, 255, 0.6);
+
+    transition: color 250ms var(--time);
 }
 
 .footer-contact:hover,
@@ -267,6 +274,8 @@ margin-left: 0px;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
+
+    transition: background-color 250ms var(--time);
 }
 
 .social-link-footer:hover,
@@ -331,6 +340,8 @@ margin-left: 0px;
     min-width: 200px;
     padding: 10px 24px;
     margin: 0 auto;
+
+    transition: background-color 250ms var(--time), box-shadow 250ms var(--time);
 }
 
 .order-button:hover,
@@ -515,6 +526,8 @@ margin-left: 0px;
     height: 100%;
     border-radius: 50%;
     fill: var(--borders-color); 
+
+    transition: background-color 250ms var(--time), fill 250ms var(--time);
 }
 
 .socials-link:hover, 
@@ -555,6 +568,8 @@ margin-left: 0px;
     border: 1px solid #AFB1B8;
     border-radius: 4px;
     color: var(--borders-color);
+
+    transition: color 250ms var(--time);
 }
 .client-item {
     width: calc((100% - 150px) / 6);
@@ -593,6 +608,8 @@ margin-left: 0px;
     border-radius: 4px;
     color: var(--primary-text-color);
     background-color: var(--secondary-background-color);
+    transition: color 250ms var(--time), background-color 250ms var(--time),
+            box-shadow 250ms var(--time)
 }
 
 .portfolio-btns {
@@ -617,12 +634,38 @@ margin-left: 0px;
 
 .product-link {
     display: block;
+
+    transition: box-shadow 250ms var(--time);
 }
 .product-link:hover,
 .product-link:focus {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
+.portfolio-overlay {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-txt {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    transition: transform 250ms var(--time);
+    padding: 63px 24px;
+    font-size: 18px;
+    line-height: 1.55;
+    background-color: rgba(33, 150, 243, 0.9);
+    color: var(--white-color);
+}
+
+.product-link:hover .portfolio-txt,
+.product-link:focus .portfolio-txt {
+    transform: translateY(0);
+}
 .products-list {
     display: flex;
     flex-wrap: wrap;
@@ -654,4 +697,67 @@ margin-left: 0px;
     border: 1px solid #EEEEEE;
     border-top: none;
     display: block;
+}
+
+
+/*---modal---*/ 
+
+.backdrop {
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    transition: opacity 250ms var(--time), visibility 250ms var(--time);
+    
+}
+.modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width:528px;
+    max-height:581px;
+    height: 100%;
+    transform: translate(-50%, -50%); scale: (1);
+    background-color: var(--white-color);
+    transition: transform 250ms var(--time);
+}
+
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.close-btn-modal {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    color: var(--primary-text-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    padding: 0;
+
+    transition: border-color 250ms var(--time), color 250ms var(--time);       
+}
+
+.close-btn-modal:hover,
+.close-btn-modal:focus {
+    color: var(--blue-color);
+    border-color: var(--blue-color);
+}
+
+.close-icon{
+    fill: currentColor;
 }
